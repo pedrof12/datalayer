@@ -1,7 +1,15 @@
 {
   "name": "pedrof12/datalayer",
-  "description": "Uma simples área do cliente.",
-  "minimum-stability": "stable",
+  "description": "Um simples datalayer para o MYSQL!",
+  "keywords": [
+    "PedroF.",
+    "DevFreitas",
+    "DataLayer",
+    "pedrof12/datalayer",
+    "pedrof12",
+    "devfreitas12",
+    "DataLayer"
+  ],
   "license": "MIT",
   "authors": [
     {
