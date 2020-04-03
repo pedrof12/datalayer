@@ -10,6 +10,7 @@
     "DataLayer"
   ],
   "license": "MIT",
+  "minimum-stability": "stable",
   "authors": [
     {
       "name": "João Pedro A. Freitas",
