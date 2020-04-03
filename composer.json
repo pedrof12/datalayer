@@ -1,0 +1,22 @@
+{
+  "name": "pedrof12/datalayer",
+  "description": "Uma simples área do cliente.",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "João Pedro A. Freitas",
+      "email": "devfreitas12@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "PedroF12\\Datalayer\\": "src/"
+    },
+    "files": []
+  },
+  "require": {
+    "php": "^7.2",
+    "ext-pdo": "*"
+  }
+}
