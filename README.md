@@ -76,5 +76,5 @@ $teste->get()->fetch()->findBy("first_name", 'Teste')->limit(2)->count();
 - `$teste->get()->fetch()->findBy("first_name", 'Teste')->limit(2)->foreach();` - retorna 2 dados da tabela em que o `first_name` for igual a `Teste`.
 
 
-# Estamosna versão 0.0.1.
+# Estamos na versão 0.0.1.
 Pode haver bugs ou problemas, caso ache algum, entre em contato pelo meu **discord** ``PedroF.#7734``.
