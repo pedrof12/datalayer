@@ -1,61 +1,80 @@
-#pedrof12/datalayer 
-#### Versão 0.0.1
-Um simples administrador para o seu banco de dados mysql.
+# pedrof12/datalayer
+Um simples datalayer para o seu banco de dados.
 
-### Update for 0.0.1
-- Você pode pegar todos os dados do seu banco de dados, filtrar.
+Primeiro, vamos começar fazendo a configuração dos dados de conexão!
+```php
+<?php 
 
-### Exemplos
+use PedroF12\Datalayer\Connect;
 
-- Primeiro, é necessário fazer a conexão com o seu banco de dados.
+// Chamando a class.
+$connect = new Connect();
 
-	
-    <?php 
-	use PedroF12\Datalayer\Connect;
-		
-	require __DIR__ . "/vendor/autoload.php";
+// Criando a conexão.
+$connect->setConnection("127.0.0.1", 3306, "root", "password")->setDatabase("test");
 
-	$connect = new Connect();
-	$connect->setConnection("127.0.0.1", 3306, "root", "password")->setDatabase("test");
-	?>
-	
-pronto, conexão aberta, se ele não retornar em sua página web nenhum erro, está tudo funcionando corretamente.
+// Se houver erro, mostre-o na tela.
 
+/* 
+* Se você quiser pegar a instancia da conexão para poder executar sql sem passar pelo datalayer é só:
+*/
 
-- Agora vamos criar uma class onde será o nosso model, criei uma chamada de `Test.php`
+$conn = Connect::getInstance(); // Retorna a váriavel de conexão PDO.
 
-	
-    <?php 
-	
-	class Teste extends DataLayer{
-	
-    public function __construct(){
-        parent::__construct("tableName"); // nome da tabela
+if (Connect::getError())
+{
+    print_r(Connect::getError());
+}
+
+?>
+```
+
+Agora vamos organizar o nosso datalayer, para isso crie uma pasta com qualquer nome, eu criei com `models`, dentro dela, crie um arquvios com o nome desejado **para seguir uma organização, use o nome da tabela.** eu criei `Test.php`. Dentro desse arquivo contem o código:
+
+```php
+<?php
+
+namespace PedroF12\Datalayer;
+
+class Teste extends DataLayer
+{
+
+    public function __construct()
+    {
+        parent::__construct("test");// Aqui vai o nome da sua tabela.
     }
-	
-	}
-	
-	?>
-	
 
-- Agora está tudo pronto, basta você usar a class `Test.php` e chamar os metódos que ela le oferece!
+}
+```
+Agora só chamar a sua Class `Test` que terá vários metodos.
+```php
+<?php
 
-	
-    <?php 
-	
-	var = $teste->get()->fetch()->findBy("first_name", 'Teste')->limit(2)->foreach();
+use PedroF12\Datalayer\Teste;
 
-	foreach ($var as $item) {
-		print_r($item);
-	}
+$teste = new Teste();
 
-	if (Connect::getError())
-	{
-		print_r(Connect::getError());
-	}
-	
-	?>
-	
+$teste->get();
+$teste->get()->fetch()->foreach();
+$teste->get()->fetch()->limit(2)->foreach();
+$teste->get()->fetch()->findBy("first_name", 'Teste')->foreach();
+$teste->get()->fetch()->findBy("first_name", 'Teste')->limit(2)->foreach();
 
-**Achoou algum problema?**
-Me contate, meu discord é `Pedro F.#7734`
+//Count - retorna a mesma coisa só que em int, ou seja a quantidade de rows com as informações.
+
+$teste->get()->fetch()->count();
+$teste->get()->fetch()->limit(2)->count();
+$teste->get()->fetch()->findBy("first_name", 'Teste')->count();
+$teste->get()->fetch()->findBy("first_name", 'Teste')->limit(2)->count();
+
+```
+
+- `$teste->get();` - retorna todos os dados da tabela.
+- `$teste->get()->fetch()->foreach();` - retorna todos os dados da tabela prontos para ser feito o foreach ou o while.
+- `$teste->get()->fetch()->limit(2)->foreach();` - retorna `2` dados da tabela prontos para ser feito o foreach ou o while. 
+- `$teste->get()->fetch()->findBy("first_name", 'Teste')->foreach();` - retorna todos os dados da tabela em que o `first_name` for igual a `Teste`.
+- `$teste->get()->fetch()->findBy("first_name", 'Teste')->limit(2)->foreach();` - retorna 2 dados da tabela em que o `first_name` for igual a `Teste`.
+
+
+# Estamosna versão 0.0.1.
+Pode haver bugs ou problemas, caso ache algum, entre em contato pelo meu **discord** ``PedroF.#7734``.
