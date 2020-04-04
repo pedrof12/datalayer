@@ -1,0 +1,29 @@
+{
+  "name": "pedrof12/datalayer",
+  "description": "Um simples datalayer para o MYSQL!",
+  "keywords": [
+    "PedroF.",
+    "DevFreitas",
+    "DataLayer",
+    "pedrof12",
+    "devfreitas12",
+    "DataLayer"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "João Pedro A. Freitas",
+      "email": "devfreitas12@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "PedroF12\\Datalayer\\": "src/"
+    },
+    "files": []
+  },
+  "require": {
+    "php": "^7.2",
+    "ext-pdo": "*"
+  }
+}
